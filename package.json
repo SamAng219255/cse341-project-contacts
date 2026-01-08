@@ -1,0 +1,24 @@
+{
+  "name": "cse341-project-contacts",
+  "version": "1.0.0",
+  "description": "Project 1 for CSE 341. Stores and fetches contacts from a database.",
+  "homepage": "https://github.com/SamAng219255/cse341-project-contacts#readme",
+  "bugs": {
+    "url": "https://github.com/SamAng219255/cse341-project-contacts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamAng219255/cse341-project-contacts.git"
+  },
+  "author": "Sam Anguiano",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongodb": "^7.0.0"
+  }
+}
