@@ -9,7 +9,7 @@ const initDB = callback => {
 	}
 	MongoClient.connect(process.env.MONGO_URI)
 		.then(client => {
-			_db = client;
+			_db = client.db("project1");
 			callback(null, _db);
 		})
 		.catch(err => {

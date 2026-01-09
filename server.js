@@ -6,13 +6,19 @@ const env = require("dotenv").config()
 const app = express()
 const mongodb = require("./database")
 const bodyParser = require("body-parser")
-const static = require("./routes/static")
 const path = require('path')
+const static = require("./routes/static")
+const contactsModel = require('./models/contacts')
+const contactsRoute = require("./routes/contacts")
 
 /* ***********************
  * Initialize Database connection
  * ************************/
-//mongodb.initDB(err => { if(err) throw err; })
+mongodb.initDB((err, db) => { 
+  if(err) throw err; 
+
+  contactsModel.init(db);
+})
 
 /* ***********************
  * Middleware
@@ -25,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-
 app.use(static)
 
 // Routes
-// app.get("/path", Router)
+app.use("/contacts", contactsRoute);
 
 app.use("/images/", async (req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, "public", "images", "no-image.svg"))
