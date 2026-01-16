@@ -1,4 +1,4 @@
-const {MongoClient} = require('mongodb');
+const { MongoClient } = require("mongodb");
 
 let _db;
 
@@ -14,7 +14,7 @@ const initDB = callback => {
 		})
 		.catch(err => {
 			callback(err);
-		})
+		});
 };
 
 const getDB = () => {
@@ -22,9 +22,9 @@ const getDB = () => {
 		throw Error("Database not initialized!");
 	}
 	return _db;
-}
+};
 
 module.exports = {
 	initDB,
-	getDB
-}
+	getDB,
+};

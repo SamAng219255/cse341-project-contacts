@@ -1,0 +1,289 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Contacts API",
+    "description": "Stores and displays contacts.",
+    "version": "1.0.0"
+  },
+  "host": "127.0.0.1:8080",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/contacts/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contact found and returned.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "John"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "john@example.com"
+                },
+                "favoriteColor": {
+                  "type": "string",
+                  "example": "red"
+                },
+                "birthday": {
+                  "type": "string",
+                  "example": "1 Jan"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Client provided an invalid id."
+          },
+          "404": {
+            "description": "No contact with the provided id exists."
+          },
+          "503": {
+            "description": "Server still turning on and not yet connected to database."
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "New Contact Information",
+            "in": "body",
+            "description": "New value to update contact record with.",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "John"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "john@example.com"
+                },
+                "favoriteColor": {
+                  "type": "string",
+                  "example": "red"
+                },
+                "birthday": {
+                  "type": "string",
+                  "example": "1 Jan"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contact found and updated. The body is the new complete contact record.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "John"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "john@example.com"
+                },
+                "favoriteColor": {
+                  "type": "string",
+                  "example": "red"
+                },
+                "birthday": {
+                  "type": "string",
+                  "example": "1 Jan"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "404": {
+            "description": "No contact with the provided id exists."
+          },
+          "500": {
+            "description": "Internal database error."
+          },
+          "503": {
+            "description": "Server still turning on and not yet connected to database."
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Contact found and deleted."
+          },
+          "404": {
+            "description": "No contact with the provided id exists."
+          },
+          "503": {
+            "description": "Server still turning on and not yet connected to database."
+          }
+        }
+      }
+    },
+    "/contacts/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Full list of contacts returned. May be empty.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string",
+                    "example": "John"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "example": "Doe"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "john@example.com"
+                  },
+                  "favoriteColor": {
+                    "type": "string",
+                    "example": "red"
+                  },
+                  "birthday": {
+                    "type": "string",
+                    "example": "1 Jan"
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "503": {
+            "description": "Server still turning on and not yet connected to database."
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "New Contact Information",
+            "in": "body",
+            "description": "New value to update contact record with.",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "John"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "john@example.com"
+                },
+                "favoriteColor": {
+                  "type": "string",
+                  "example": "red"
+                },
+                "birthday": {
+                  "type": "string",
+                  "example": "1 Jan"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "favoriteColor",
+                "birthday"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Contact successfully created.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "000000000000000000000000"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Client did not provide sufficient data to create a contact record."
+          },
+          "500": {
+            "description": "Internal database error."
+          },
+          "503": {
+            "description": "Server still turning on and not yet connected to database."
+          }
+        }
+      }
+    }
+  }
+}
