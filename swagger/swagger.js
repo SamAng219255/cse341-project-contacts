@@ -7,6 +7,9 @@ const doc = {
 		description: "Stores and displays contacts.",
 	},
 	host: `${process.env.HOST}:${process.env.PORT}`,
+	schemes: [
+		"https"
+	],
 };
 
 const outputFile = "./swagger.json";
